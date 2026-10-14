@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "WhoisRadar - Domain WHOIS & Registrar Intelligence API",
+    "version": "1.0.0",
+    "description": "High-speed domain WHOIS intelligence, age calculation, and expiration radar."
+  },
+  "servers": [
+    {
+      "url": "https://whoisradar-api.onrender.com"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "responses": {
+          "200": {
+            "description": "Service healthy"
+          }
+        }
+      }
+    },
+    "/v1/whois/lookup": {
+      "post": {
+        "summary": "Lookup Domain WHOIS Data",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "domain": {
+                    "type": "string",
+                    "example": "stripe.com"
+                  }
+                },
+                "required": [
+                  "domain"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Domain WHOIS details"
+          }
+        }
+      }
+    }
+  }
+}
